@@ -6,6 +6,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -43,6 +44,10 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = Firebase.auth
+        val currentUser = auth.currentUser
+        currentUser?.let {
+            findNavController().navigate(R.id.action_loginFragment_to_feedFragment)
+        }
 
         binding.buttonGiris.setOnClickListener {
             viewModel.anonLogin(it)

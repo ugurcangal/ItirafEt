@@ -32,6 +32,8 @@ class FeedFragment : Fragment() {
 
         val tempViewModel : FeedViewModel by viewModels()
         viewModel = tempViewModel
+        postArrayList = ArrayList()
+        postAdapter = PostAdapter(postArrayList)
     }
 
     override fun onCreateView(
@@ -41,49 +43,40 @@ class FeedFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentFeedBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        postArrayList = ArrayList()
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        postAdapter = PostAdapter(postArrayList)
-        binding.recyclerView.adapter = postAdapter
-        getPost()
+        preparePostRecyclerView()
+        observePostList()
+        viewModel.getPost()
 
-        menuFun()
+        binding.buttonFAB.setOnClickListener {
+            viewModel.newPost(it)
+        }
 
     }
 
-    fun getPost(){
-        firestore.collection("Posts").orderBy("date",
-            Query.Direction.DESCENDING).addSnapshotListener{ value, error ->
-            if (error != null){
-                Log.e("getPost Hata" , error.localizedMessage!!.toString())
-            }else{
-                value?.let {
-                    if (!value.isEmpty){
-                        val documents = value.documents
 
-                        postArrayList.clear()
-
-                        for (document in documents){
-
-                            val postText = document.get("postText") as String
-                            val date = document.get("date")
-
-                            val post = Post(postText, date.toString())
-                            postArrayList.add(post)
-
-                        }
-                        postAdapter.notifyDataSetChanged()
-                    }
-                }
-            }
+    private fun preparePostRecyclerView(){
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = postAdapter
         }
     }
+
+    private fun observePostList() {
+        viewModel.observePostList().observe(viewLifecycleOwner){
+            postAdapter.setList(it)
+            postAdapter.notifyDataSetChanged()
+        }
+    }
+
+
+
 
 
 
@@ -97,13 +90,11 @@ class FeedFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     R.id.yeniGonderi -> {
-                        findNavController().navigate(R.id.action_feedFragment_to_postFragment)
+
                     }
                 }
-                return true
+                return false
             }
-
-
         })
     }
 

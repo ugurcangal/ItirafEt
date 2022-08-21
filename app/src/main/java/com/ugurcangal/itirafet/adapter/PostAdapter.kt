@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugurcangal.itirafet.databinding.PostDesignBinding
 import com.ugurcangal.itirafet.model.Post
 
-class PostAdapter(private val postList : ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>() {
+class PostAdapter(private var postList : ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>() {
 
     class PostAdapterViewHolder(val binding : PostDesignBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -26,6 +26,11 @@ class PostAdapter(private val postList : ArrayList<Post>) : RecyclerView.Adapter
 
     override fun getItemCount(): Int {
         return postList.size
+    }
+
+    fun setList(newList: ArrayList<Post>){
+        this.postList = newList
+        notifyDataSetChanged()
     }
 
 }
