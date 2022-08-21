@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="10dp"
+    android:backgroundTint="#C6C5C5"
+    app:layout_constraintStart_toStartOf="parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/postTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DENEMEDENEMEDENEDENEMEDENEMEDENEMEDENEMEMEDENEMEDENEME"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/postTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zaman"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"/>
+
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>
