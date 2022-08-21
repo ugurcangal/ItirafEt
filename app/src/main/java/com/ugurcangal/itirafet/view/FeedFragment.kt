@@ -3,6 +3,7 @@ package com.ugurcangal.itirafet.view
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
@@ -50,6 +51,7 @@ class FeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         preparePostRecyclerView()
         observePostList()
         viewModel.getPost()
@@ -68,6 +70,7 @@ class FeedFragment : Fragment() {
         }
     }
 
+
     private fun observePostList() {
         viewModel.observePostList().observe(viewLifecycleOwner){
             postAdapter.setList(it)
@@ -76,12 +79,7 @@ class FeedFragment : Fragment() {
     }
 
 
-
-
-
-
-
-    fun menuFun(){
+    private fun menuFun(){
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.post_menu,menu)
@@ -90,10 +88,10 @@ class FeedFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     R.id.yeniGonderi -> {
-
+                        findNavController().navigate(R.id.action_feedFragment_to_postFragment)
                     }
                 }
-                return false
+                return true
             }
         })
     }

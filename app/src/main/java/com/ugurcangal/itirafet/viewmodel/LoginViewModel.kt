@@ -13,13 +13,14 @@ class LoginViewModel : ViewModel() {
 
     private val auth = Firebase.auth
 
-    fun anonLogin(view: View){
+    fun anonLogin(view: View) {
         auth.signInAnonymously()
             .addOnCompleteListener() { task ->
-                if (task.isSuccessful){
-                    Log.d("Giriş","signInAnonymously:success")
+                if (task.isSuccessful) {
+                    Log.d("Giriş", "signInAnonymously:success")
                     val user = auth.currentUser
-                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_feedFragment)
+                    Navigation.findNavController(view)
+                        .navigate(R.id.action_loginFragment_to_feedFragment)
                 }
             }
     }

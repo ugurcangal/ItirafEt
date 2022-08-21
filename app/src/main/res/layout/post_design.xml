@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     app:cardCornerRadius="10dp"
-    android:backgroundTint="#C6C5C5"
+    android:backgroundTint="#63898C"
     app:layout_constraintStart_toStartOf="parent">
 
 <LinearLayout
@@ -23,10 +23,11 @@
             android:layout_height="wrap_content"
             android:text="DENEMEDENEMEDENEDENEMEDENEMEDENEMEDENEMEMEDENEMEDENEME"
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             android:textSize="18sp"
             android:layout_gravity="center"/>
 
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="zaman"
+            android:textColor="@color/white"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"

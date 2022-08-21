@@ -46,6 +46,10 @@ class PostFragment : Fragment() {
             findNavController().navigate(R.id.action_postFragment_to_feedFragment)
             Toast.makeText(context,"İtiraf Paylaşıldı!",Toast.LENGTH_SHORT).show()
         }
+
+        binding.buttonLogout.setOnClickListener{
+            viewModel.logOut(it)
+        }
     }
 
 

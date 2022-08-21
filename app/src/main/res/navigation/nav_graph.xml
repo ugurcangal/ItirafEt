@@ -23,7 +23,8 @@
         tools:layout="@layout/fragment_feed" >
         <action
             android:id="@+id/action_feedFragment_to_postFragment"
-            app:destination="@id/postFragment" />
+            app:destination="@id/postFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -32,6 +33,13 @@
         tools:layout="@layout/fragment_post" >
         <action
             android:id="@+id/action_postFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
+            app:destination="@id/feedFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_postFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/postFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
