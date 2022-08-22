@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DENEMEDENEMEDENEDENEMEDENEMEDENEMEDENEMEMEDENEMEDENEME"
+            android:fontFamily="@font/louis"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textAlignment="center"
@@ -31,17 +32,43 @@
             android:textSize="18sp"
             android:layout_gravity="center"/>
 
-        <TextView
-            android:id="@+id/postTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="zaman"
-            android:textColor="@color/white"
-            android:layout_gravity="end"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="12sp"/>
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_marginBottom="5dp"
+           android:layout_height="match_parent">
+
+               <com.google.android.material.textview.MaterialTextView
+                   android:id="@+id/postComment"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Yorumlar"
+                   android:textColor="#033540"
+                   android:fontFamily="sans-serif-condensed"
+                   android:textStyle="bold"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="5dp"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   android:layout_marginBottom="5dp"
+                   android:textSize="16sp"/>
+
+               <TextView
+                   android:id="@+id/postTime"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="zaman"
+                   android:textColor="@color/white"
+                   android:fontFamily="@font/louis"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginBottom="5dp"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   android:textSize="14sp"/>
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </LinearLayout>

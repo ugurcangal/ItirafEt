@@ -2,18 +2,24 @@ package com.ugurcangal.itirafet.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ugurcangal.itirafet.databinding.PostDesignBinding
 import com.ugurcangal.itirafet.model.Post
+import com.ugurcangal.itirafet.view.bottomsheet.FeedBottomSheetFragment
 
-class PostAdapter(private var postList : ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>() {
+class PostAdapter(
+    private var postList: ArrayList<Post>,
+    private val fragmentManager: FragmentManager
+) : RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>() {
 
-    class PostAdapterViewHolder(val binding : PostDesignBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PostAdapterViewHolder(val binding: PostDesignBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostAdapterViewHolder {
-        val binding = PostDesignBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = PostDesignBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostAdapterViewHolder(binding)
     }
 
@@ -21,6 +27,10 @@ class PostAdapter(private var postList : ArrayList<Post>) : RecyclerView.Adapter
         val item = holder.binding
         item.postTextView.text = postList[position].postText
         item.postTime.text = postList[position].date
+        item.postComment.setOnClickListener {
+            val feedBottomSheetFragment = FeedBottomSheetFragment()
+            feedBottomSheetFragment.show(fragmentManager, "CommentSheet")
+        }
 
     }
 
@@ -28,7 +38,7 @@ class PostAdapter(private var postList : ArrayList<Post>) : RecyclerView.Adapter
         return postList.size
     }
 
-    fun setList(newList: ArrayList<Post>){
+    fun setList(newList: ArrayList<Post>) {
         this.postList = newList
         notifyDataSetChanged()
     }

@@ -1,5 +1,6 @@
 package com.ugurcangal.itirafet.view
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuProvider
@@ -52,10 +53,16 @@ class LoginFragment : Fragment() {
         binding.buttonGiris.setOnClickListener {
             viewModel.anonLogin(it)
         }
-
+        translationAnimation()
 
     }
 
+    fun translationAnimation(){
+        val ta = ObjectAnimator.ofFloat(binding.personImage, "translationY", -1000.0f,0.0f).apply {
+            duration = 1200
+        }
+        ta.start()
+    }
 
 
 

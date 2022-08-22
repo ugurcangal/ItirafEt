@@ -9,13 +9,24 @@
 
 
     <ImageView
-        android:layout_width="165dp"
-        android:layout_height="167dp"
-        android:layout_marginTop="196dp"
-        android:src="@drawable/ic_baseline_person_pin_24"
+        android:id="@+id/logoImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/personImage"
+        android:layout_width="55dp"
+        android:layout_height="57dp"
+        android:src="@drawable/ic_baseline_person_pin_24"
+        app:layout_constraintBottom_toTopOf="@id/buttonGiris"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <Button
         android:id="@+id/buttonGiris"

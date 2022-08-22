@@ -21,10 +21,11 @@ import java.util.*
 
 class PostViewModel : ViewModel() {
 
-    val firestore = Firebase.firestore
-    val auth = Firebase.auth
+    private val firestore = Firebase.firestore
+    private val auth = Firebase.auth
 
     fun uploadPost(text : String){
+
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
         val currentDate = sdf.format(Date())
         val postMap = hashMapOf<String,Any>()

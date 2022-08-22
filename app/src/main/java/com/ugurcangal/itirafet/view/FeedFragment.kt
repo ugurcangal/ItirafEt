@@ -26,7 +26,7 @@ class FeedFragment : Fragment() {
     private lateinit var postArrayList : ArrayList<Post>
     private lateinit var postAdapter : PostAdapter
     private lateinit var viewModel : FeedViewModel
-    private val firestore = Firebase.firestore
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class FeedFragment : Fragment() {
         val tempViewModel : FeedViewModel by viewModels()
         viewModel = tempViewModel
         postArrayList = ArrayList()
-        postAdapter = PostAdapter(postArrayList)
+        postAdapter = PostAdapter(postArrayList,childFragmentManager)
     }
 
     override fun onCreateView(

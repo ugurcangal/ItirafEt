@@ -5,6 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e0f4f5"
+
     tools:context=".view.PostFragment">
 
 
@@ -27,7 +29,11 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="100dp"
+        android:padding="30dp"
         android:hint="İtiraf Ediyorum..."
+        android:textColorHint="@color/black"
+        android:fontFamily="@font/louis"
+        android:background="@drawable/edittextbackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +53,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogout"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
+        android:layout_width="228dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="30dp"
+        android:background="@drawable/edittextbackground"
         android:text="Hesaptan Çıkış Yap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
