@@ -49,5 +49,9 @@
         android:id="@+id/feedBottomSheetFragment"
         android:name="com.ugurcangal.itirafet.view.bottomsheet.FeedBottomSheetFragment"
         android:label="fragment_feed_bottom_sheet"
-        tools:layout="@layout/fragment_feed_bottom_sheet" />
+        tools:layout="@layout/fragment_feed_bottom_sheet" >
+        <argument
+            android:name="postText"
+            app:argType="string" />
+    </dialog>
 </navigation>

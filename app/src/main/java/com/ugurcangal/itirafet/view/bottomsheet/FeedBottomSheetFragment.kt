@@ -24,6 +24,7 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var viewModel : FeedBottomSheetViewModel
     private lateinit var commentArrayList : ArrayList<Comment>
     private lateinit var commentAdapter : CommentAdapter
+    private lateinit var postText : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,10 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
         viewModel = tempViewModel
         commentArrayList = ArrayList()
         commentAdapter = CommentAdapter(commentArrayList)
+
+        arguments?.let {
+            postText = FeedBottomSheetFragmentArgs.fromBundle(it).postText
+        }
     }
 
     override fun onCreateView(
@@ -47,14 +52,14 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
 
         prepareCommentRecyclerView()
         observeCommentList()
-        viewModel.getComment()
+        viewModel.getComment(postText)
 
         val feedBottomSheetFragment = FeedBottomSheetFragment()
 
 
         binding.buttonYorumGonder.setOnClickListener {
             val commentText = binding.commentEditText.text.toString()
-            viewModel.uploadComment(commentText)
+            viewModel.uploadComment(commentText,postText)
             Toast.makeText(context,"Yorum Gönderildi!", Toast.LENGTH_SHORT).show()
         }
 

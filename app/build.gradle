@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -54,4 +55,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
 
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
+
 }

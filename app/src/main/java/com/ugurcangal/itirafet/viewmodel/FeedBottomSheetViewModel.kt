@@ -20,11 +20,12 @@ class FeedBottomSheetViewModel : ViewModel() {
     var commentArrayList = MutableLiveData<ArrayList<Comment>>()
     private val firestore = Firebase.firestore
 
-    fun uploadComment(text : String){
+    fun uploadComment(commentText : String, postText:String){
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
         val currentDate = sdf.format(Date())
         val postMap = hashMapOf<String,Any>()
-        postMap.put("commentText", text)
+        postMap.put("postText", postText)
+        postMap.put("commentText", commentText)
         postMap.put("date", currentDate)
         firestore.collection("Comments").add(postMap).addOnSuccessListener {
 
@@ -33,7 +34,7 @@ class FeedBottomSheetViewModel : ViewModel() {
         }
     }
 
-    fun getComment(){
+    fun getComment(inCommentPostText: String){
         firestore.collection("Comments").orderBy("date",
             Query.Direction.DESCENDING).addSnapshotListener{ value, error ->
             if (error != null){
@@ -46,13 +47,15 @@ class FeedBottomSheetViewModel : ViewModel() {
                         val commentArrayList2 = ArrayList<Comment>()
 
                         for (document in documents){
+                            if (inCommentPostText == document.get("postText")){
+                                val commentText = document.get("commentText") as String
+                                val date = document.get("date")
 
-                            val commentText = document.get("commentText") as String
-                            val date = document.get("date")
+                                val comment = Comment(commentText, date.toString())
+                                commentArrayList2.add(comment)
+                                commentArrayList.value = commentArrayList2
+                            }
 
-                            val comment = Comment(commentText, date.toString())
-                            commentArrayList2.add(comment)
-                            commentArrayList.value = commentArrayList2
                         }
                     }
                 }
