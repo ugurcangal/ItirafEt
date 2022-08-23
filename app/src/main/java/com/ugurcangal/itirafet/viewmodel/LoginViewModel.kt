@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.ugurcangal.itirafet.R

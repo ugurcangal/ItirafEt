@@ -1,21 +1,18 @@
 package com.ugurcangal.itirafet.view.bottomsheet
 
-import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.marginTop
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.adapter.CommentAdapter
 import com.ugurcangal.itirafet.databinding.FragmentFeedBottomSheetBinding
 import com.ugurcangal.itirafet.model.Comment
 import com.ugurcangal.itirafet.viewmodel.FeedBottomSheetViewModel
+import kotlin.collections.ArrayList
 
 
 class FeedBottomSheetFragment : BottomSheetDialogFragment() {

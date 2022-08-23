@@ -1,17 +1,11 @@
 package com.ugurcangal.itirafet.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.adapter.PostAdapter
 import com.ugurcangal.itirafet.databinding.FragmentFeedBinding
@@ -34,7 +28,7 @@ class FeedFragment : Fragment() {
         val tempViewModel : FeedViewModel by viewModels()
         viewModel = tempViewModel
         postArrayList = ArrayList()
-        postAdapter = PostAdapter(postArrayList,childFragmentManager)
+        postAdapter = PostAdapter(postArrayList)
     }
 
     override fun onCreateView(
@@ -57,7 +51,7 @@ class FeedFragment : Fragment() {
         viewModel.getPost()
 
         binding.buttonFAB.setOnClickListener {
-            viewModel.newPost(it)
+            findNavController().navigate(R.id.action_feedFragment_to_postFragment)
         }
 
     }

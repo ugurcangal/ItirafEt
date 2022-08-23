@@ -17,10 +17,6 @@ class FeedViewModel : ViewModel() {
     var postArrayList = MutableLiveData<ArrayList<Post>>()
     private val firestore = Firebase.firestore
 
-    fun newPost(view: View){
-        Navigation.findNavController(view).navigate(R.id.action_feedFragment_to_postFragment)
-    }
-
     fun getPost(){
         firestore.collection("Posts").orderBy("date",
             Query.Direction.DESCENDING).addSnapshotListener{ value, error ->

@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.databinding.FragmentLoginBinding
 import com.ugurcangal.itirafet.viewmodel.LoginViewModel
+import java.util.*
 
 
 class LoginFragment : Fragment() {
@@ -44,6 +45,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         auth = Firebase.auth
         val currentUser = auth.currentUser

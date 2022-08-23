@@ -15,7 +15,6 @@ import com.ugurcangal.itirafet.view.bottomsheet.FeedBottomSheetFragment
 
 class PostAdapter(
     private var postList: ArrayList<Post>,
-    private val fragmentManager: FragmentManager
 ) : RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>() {
 
     class PostAdapterViewHolder(val binding: PostDesignBinding) :
