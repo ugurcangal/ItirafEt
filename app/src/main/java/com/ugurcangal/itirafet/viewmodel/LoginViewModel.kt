@@ -18,7 +18,6 @@ class LoginViewModel : ViewModel() {
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     Log.d("Giriş", "signInAnonymously:success")
-                    val user = auth.currentUser
                     Navigation.findNavController(view)
                         .navigate(R.id.action_loginFragment_to_feedFragment)
                 }

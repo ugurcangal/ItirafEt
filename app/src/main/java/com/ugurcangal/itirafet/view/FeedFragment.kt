@@ -79,21 +79,5 @@ class FeedFragment : Fragment() {
     }
 
 
-    private fun menuFun(){
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.post_menu,menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-                    R.id.yeniGonderi -> {
-                        findNavController().navigate(R.id.action_feedFragment_to_postFragment)
-                    }
-                }
-                return true
-            }
-        })
-    }
 
 }

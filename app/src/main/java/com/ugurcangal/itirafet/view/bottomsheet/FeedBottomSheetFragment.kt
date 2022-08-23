@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.marginTop
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -54,14 +55,16 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
         observeCommentList()
         viewModel.getComment(postText)
 
-        val feedBottomSheetFragment = FeedBottomSheetFragment()
-
 
         binding.buttonYorumGonder.setOnClickListener {
-            var commentText = binding.commentEditText.text.toString()
-            viewModel.uploadComment(commentText,postText)
-            Toast.makeText(context,"Yorum Gönderildi!", Toast.LENGTH_SHORT).show()
-            binding.commentEditText.text.clear()
+            val commentText = binding.commentEditText.text.toString()
+            if (commentText.isNotEmpty()){
+                viewModel.uploadComment(commentText,postText)
+                Toast.makeText(context,"Yorum Gönderildi!", Toast.LENGTH_SHORT).show()
+                binding.commentEditText.text.clear()
+            }else{
+                Toast.makeText(context,"Lütfen önce yorum yazın!", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

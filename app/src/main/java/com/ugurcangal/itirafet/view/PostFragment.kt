@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ugurcangal.itirafet.R
@@ -29,11 +28,10 @@ class PostFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentPostBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+        _binding = FragmentPostBinding.inflate(inflater, container, false)
+        return binding.root
 
     }
 
@@ -42,9 +40,16 @@ class PostFragment : Fragment() {
 
         binding.buttonPaylas.setOnClickListener {
             val postText = binding.postEditText.text.toString()
-            viewModel.uploadPost(postText)
-            findNavController().navigate(R.id.action_postFragment_to_feedFragment)
-            Toast.makeText(context,"İtiraf Paylaşıldı!",Toast.LENGTH_SHORT).show()
+            if (postText.length < 15){
+                Toast.makeText(context,"Lütfen daha uzun bir yazı girin!",Toast.LENGTH_SHORT).show()
+            }else if (postText.length > 600){
+                Toast.makeText(context,"İtiraf karakter sınırını aşıyor!",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                viewModel.uploadPost(postText)
+                findNavController().navigate(R.id.action_postFragment_to_feedFragment)
+                Toast.makeText(context,"İtiraf Paylaşıldı!",Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.buttonLogout.setOnClickListener{

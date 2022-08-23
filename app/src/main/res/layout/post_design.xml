@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DENEMEDENEMEDENEDENEMEDENEMEDENEMEDENEMEMEDENEMEDENEME"
-            android:fontFamily="@font/louis"
+            android:fontFamily="sans-serif-condensed"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textAlignment="center"

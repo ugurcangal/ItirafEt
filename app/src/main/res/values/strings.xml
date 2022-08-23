@@ -2,4 +2,5 @@
     <string name="app_name">İtiraf Et</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tiraf_et_logo">İtiraf Et Logo</string>
 </resources>

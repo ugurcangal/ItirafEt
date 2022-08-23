@@ -35,8 +35,6 @@ class PostAdapter(
         item.postComment.setOnClickListener {
             val action = FeedFragmentDirections.actionFeedFragmentToFeedBottomSheetFragment(postList[position].postText)
             Navigation.findNavController(it).navigate(action)
-//            val feedBottomSheetFragment = FeedBottomSheetFragment()
-//            feedBottomSheetFragment.show(fragmentManager, "CommentSheet")
         }
 
     }
