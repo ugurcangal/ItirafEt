@@ -80,6 +80,7 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
     private fun observeCommentList(){
         viewModel.observeCommentList().observe(viewLifecycleOwner){
             commentAdapter.setCommentList(it)
+            binding.yorumlarText.text = "Yorumlar : ${it.size}"
         }
     }
 
