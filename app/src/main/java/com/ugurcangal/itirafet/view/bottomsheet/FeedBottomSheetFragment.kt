@@ -58,9 +58,10 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
 
 
         binding.buttonYorumGonder.setOnClickListener {
-            val commentText = binding.commentEditText.text.toString()
+            var commentText = binding.commentEditText.text.toString()
             viewModel.uploadComment(commentText,postText)
             Toast.makeText(context,"Yorum Gönderildi!", Toast.LENGTH_SHORT).show()
+            binding.commentEditText.text.clear()
         }
 
     }

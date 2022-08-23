@@ -3,6 +3,7 @@ package com.ugurcangal.itirafet.view
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -52,6 +53,7 @@ class LoginFragment : Fragment() {
 
         binding.buttonGiris.setOnClickListener {
             viewModel.anonLogin(it)
+            Toast.makeText(context,"Hoşgeldiniz :)",Toast.LENGTH_SHORT).show()
         }
         translationAnimation()
 
