@@ -31,10 +31,11 @@ class FeedViewModel : ViewModel() {
 
                         for (document in documents){
 
+                            val id = document.id
                             val postText = document.get("postText") as String
                             val date = document.get("date")
 
-                            val post = Post(postText, date.toString())
+                            val post = Post(id,postText, date.toString())
                             postArrayList2.add(post)
                             postArrayList.value = postArrayList2
                         }

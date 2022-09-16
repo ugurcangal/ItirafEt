@@ -32,7 +32,7 @@ class PostAdapter(
         item.postTextView.text = postList[position].postText
         item.postTime.text = postList[position].date
         item.postComment.setOnClickListener {
-            val action = FeedFragmentDirections.actionFeedFragmentToFeedBottomSheetFragment(postList[position].postText)
+            val action = FeedFragmentDirections.actionFeedFragmentToFeedBottomSheetFragment(postList[position].id)
             Navigation.findNavController(it).navigate(action)
         }
 

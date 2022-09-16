@@ -20,11 +20,11 @@ class FeedBottomSheetViewModel : ViewModel() {
     var commentArrayList = MutableLiveData<ArrayList<Comment>>()
     private val firestore = Firebase.firestore
 
-    fun uploadComment(commentText : String, postText:String){
+    fun uploadComment(commentText : String, postId:String){
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
         val currentDate = sdf.format(Date())
         val postMap = hashMapOf<String,Any>()
-        postMap.put("postText", postText)
+        postMap.put("postId", postId)
         postMap.put("commentText", commentText)
         postMap.put("date", currentDate)
         firestore.collection("Comments").add(postMap).addOnSuccessListener {
@@ -34,7 +34,7 @@ class FeedBottomSheetViewModel : ViewModel() {
         }
     }
 
-    fun getComment(inCommentPostText: String){
+    fun getComment(postId: String){
         firestore.collection("Comments").orderBy("date",
             Query.Direction.DESCENDING).addSnapshotListener{ value, error ->
             if (error != null){
@@ -47,7 +47,7 @@ class FeedBottomSheetViewModel : ViewModel() {
                         val commentArrayList2 = ArrayList<Comment>()
 
                         for (document in documents){
-                            if (inCommentPostText == document.get("postText")){
+                            if (postId == document.get("postId")){
                                 val commentText = document.get("commentText") as String
                                 val date = document.get("date")
 

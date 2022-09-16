@@ -51,7 +51,7 @@
         android:label="fragment_feed_bottom_sheet"
         tools:layout="@layout/fragment_feed_bottom_sheet" >
         <argument
-            android:name="postText"
+            android:name="postId"
             app:argType="string" />
     </dialog>
 </navigation>
