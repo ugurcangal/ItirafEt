@@ -8,30 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.ugurcangal.itirafet.BaseFragment
 import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.databinding.FragmentPostBinding
 import com.ugurcangal.itirafet.viewmodel.PostViewModel
 
-class PostFragment : Fragment() {
+class PostFragment : BaseFragment<FragmentPostBinding,PostViewModel>(FragmentPostBinding::inflate) {
 
-    private var _binding : FragmentPostBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var viewModel : PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel : PostViewModel by viewModels()
-        viewModel = tempViewModel
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentPostBinding.inflate(inflater, container, false)
-        return binding.root
 
     }
 
@@ -56,6 +42,8 @@ class PostFragment : Fragment() {
             viewModel.logOut(it)
         }
     }
+
+    override fun getViewModel(): Class<PostViewModel> = PostViewModel::class.java
 
 
 }
