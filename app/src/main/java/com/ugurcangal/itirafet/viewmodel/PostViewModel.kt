@@ -18,7 +18,7 @@ class PostViewModel : ViewModel() {
 
     fun uploadPost(text : String){
 
-        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+        val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
         val currentDate = sdf.format(Date())
         val postMap = hashMapOf<String,Any>()
         postMap.put("postText", text)
