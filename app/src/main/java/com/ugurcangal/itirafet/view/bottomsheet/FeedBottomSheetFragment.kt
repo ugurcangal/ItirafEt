@@ -58,7 +58,7 @@ class FeedBottomSheetFragment : BottomSheetDialogFragment() {
             if (commentText.isNotEmpty()){
                 viewModel.uploadComment(commentText,postId)
                 Toast.makeText(context,"Yorum Gönderildi!", Toast.LENGTH_SHORT).show()
-                binding.commentEditText.text.clear()
+                binding.commentEditText.text?.clear()
             }else{
                 Toast.makeText(context,"Lütfen önce yorum yazın!", Toast.LENGTH_SHORT).show()
             }

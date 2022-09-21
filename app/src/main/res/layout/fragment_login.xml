@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#033540"
+    android:background="@drawable/login_gradient"
     tools:context=".view.LoginFragment">
 
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_width="226dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="130dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,24 +20,27 @@
 
     <ImageView
         android:id="@+id/personImage"
-        android:layout_width="55dp"
-        android:layout_height="57dp"
-        android:src="@drawable/ic_baseline_person_pin_24"
-        app:layout_constraintBottom_toTopOf="@id/buttonGiris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/person_icon"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonGiris"
         android:layout_width="242dp"
         android:layout_height="64dp"
-        android:backgroundTint="#63898C"
+        android:backgroundTint="#85C5CA"
+        app:cornerRadius="10dp"
         android:text="Anonim Olarak Giriş Yap"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/light"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697" />
+        app:layout_constraintTop_toBottomOf="@id/personImage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
