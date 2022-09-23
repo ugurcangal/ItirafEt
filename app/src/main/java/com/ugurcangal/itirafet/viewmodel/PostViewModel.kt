@@ -21,9 +21,11 @@ class PostViewModel : ViewModel() {
         val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
         val currentDate = sdf.format(Date())
         val postMap = hashMapOf<String,Any>()
+        val likerList = arrayListOf<String>()
         postMap.put("postText", text)
         postMap.put("date", currentDate)
         postMap.put("likeCount", 0)
+        postMap.put("liker", likerList)
         firestore.collection("Posts").add(postMap).addOnSuccessListener {
 
         }.addOnFailureListener {

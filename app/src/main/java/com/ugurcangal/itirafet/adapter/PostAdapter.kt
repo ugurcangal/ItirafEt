@@ -47,12 +47,15 @@ class PostAdapter(
         var liker = ArrayList<String>()
 
         firestore.collection("Posts").document(postList[position].id).addSnapshotListener { value, error ->
-            liker = value?.get("liker") as ArrayList<String>
-            if (liker.contains(auth.currentUser?.uid)){
-                item.postLike.setImageResource(R.drawable.ic_like_dolu)
-            }else{
-                item.postLike.setImageResource(R.drawable.ic_like)
+            value?.let {
+                liker = it.get("liker") as ArrayList<String>
+                if (liker.contains(auth.currentUser?.uid)){
+                    item.postLike.setImageResource(R.drawable.ic_like_dolu)
+                }else{
+                    item.postLike.setImageResource(R.drawable.ic_like)
+                }
             }
+
         }
 
 
