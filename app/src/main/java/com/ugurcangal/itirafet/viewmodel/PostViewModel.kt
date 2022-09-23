@@ -23,6 +23,7 @@ class PostViewModel : ViewModel() {
         val postMap = hashMapOf<String,Any>()
         postMap.put("postText", text)
         postMap.put("date", currentDate)
+        postMap.put("likeCount", 0)
         firestore.collection("Posts").add(postMap).addOnSuccessListener {
 
         }.addOnFailureListener {

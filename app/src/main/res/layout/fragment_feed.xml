@@ -27,7 +27,7 @@
         android:id="@+id/newPostText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/light"
         android:text="İtiraflar"
         android:textColor="@color/dark_main_color"

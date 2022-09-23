@@ -40,33 +40,56 @@
            android:layout_marginTop="10dp"
            android:layout_height="match_parent">
 
-               <com.google.android.material.textview.MaterialTextView
+           <TextView
+               android:id="@+id/likeCount"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="100"
+               android:textSize="14sp"
+               android:textColor="@color/dark_main_color"
+               android:fontFamily="@font/light"
+               android:textStyle="bold"
+               app:layout_constraintEnd_toStartOf="@id/postLike"
+               app:layout_constraintTop_toTopOf="@id/postLike"
+               android:layout_marginRight="10dp"/>
+
+
+           <androidx.appcompat.widget.AppCompatImageView
+               android:id="@+id/postLike"
+               android:layout_width="25dp"
+               android:layout_height="25dp"
+               android:src="@drawable/ic_like"
+               android:layout_marginRight="10dp"
+               android:layout_marginTop="5dp"
+               app:layout_constraintEnd_toStartOf="@id/postComment"
+               app:layout_constraintTop_toTopOf="parent"
+               android:layout_marginBottom="5dp"
+               />
+
+               <ImageView
                    android:id="@+id/postComment"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Yorumlar"
-                   android:textColor="@color/dark_main_color"
-                   android:fontFamily="@font/poppins_regular"
-                   android:textStyle="bold"
-                   android:layout_marginLeft="10dp"
+                   android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:src="@drawable/yorum"
+                   android:layout_marginRight="30dp"
                    android:layout_marginTop="5dp"
-                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintTop_toTopOf="parent"
                    android:layout_marginBottom="5dp"
-                   android:textSize="16sp"/>
+                   />
 
                <TextView
                    android:id="@+id/postTime"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="zaman"
+                   android:text="23/01/2020 "
                    android:textColor="@color/dark_main_color"
                    android:fontFamily="@font/poppins_regular"
-                   android:layout_marginRight="10dp"
+                   android:layout_marginLeft="10dp"
                    android:layout_marginTop="5dp"
                    android:layout_marginBottom="5dp"
                    app:layout_constraintTop_toTopOf="parent"
-                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
                    android:textSize="14sp"/>
 
 
@@ -75,10 +98,10 @@
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/line_7" />
+        android:background="@drawable/line_9" />
 
 
 

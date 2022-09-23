@@ -33,9 +33,11 @@ class FeedViewModel : ViewModel() {
 
                             val id = document.id
                             val postText = document.get("postText") as String
+                            val likeCount = document.get("likeCount")
                             val date = document.get("date")
 
-                            val post = Post(id,postText, date.toString())
+
+                            val post = Post(id,postText, likeCount.toString(), date.toString())
                             postArrayList2.add(post)
                             postArrayList.value = postArrayList2
                         }
