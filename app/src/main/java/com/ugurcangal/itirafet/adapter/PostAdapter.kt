@@ -39,39 +39,39 @@ class PostAdapter(
         val item = holder.binding
         item.postTextView.text = postList[position].postText
         item.postTime.text = postList[position].date
-        item.likeCount.text = postList[position].likeCount
+//        item.likeCount.text = postList[position].likeCount
 
         val firestore : FirebaseFirestore = Firebase.firestore
         val auth : FirebaseAuth = Firebase.auth
 
-        var liker = ArrayList<String>()
+//        var liker = ArrayList<String>()
+//
+//        firestore.collection("Posts").document(postList[position].id).addSnapshotListener { value, error ->
+//            value?.let {
+//                liker = it.get("liker") as ArrayList<String>
+//                if (liker.contains(auth.currentUser?.uid)){
+//                    item.postLike.setImageResource(R.drawable.ic_like_dolu)
+//                }else{
+//                    item.postLike.setImageResource(R.drawable.ic_like)
+//                }
+//            }
+//
+//        }
 
-        firestore.collection("Posts").document(postList[position].id).addSnapshotListener { value, error ->
-            value?.let {
-                liker = it.get("liker") as ArrayList<String>
-                if (liker.contains(auth.currentUser?.uid)){
-                    item.postLike.setImageResource(R.drawable.ic_like_dolu)
-                }else{
-                    item.postLike.setImageResource(R.drawable.ic_like)
-                }
-            }
 
-        }
-
-
-        item.postLike.setOnClickListener {
-            if (liker.contains(auth.currentUser?.uid)){
-                liker.remove(auth.currentUser!!.uid)
-                item.postLike.setImageResource(R.drawable.ic_like)
-                firestore.collection("Posts").document(postList[position].id).update("likeCount",postList[position].likeCount.toInt()-1)
-                firestore.collection("Posts").document(postList[position].id).update("liker",liker)
-            }else{
-                liker.add(auth.currentUser!!.uid)
-                item.postLike.setImageResource(R.drawable.ic_like_dolu)
-                firestore.collection("Posts").document(postList[position].id).update("liker", liker)
-                firestore.collection("Posts").document(postList[position].id).update("likeCount",postList[position].likeCount.toInt()+1)
-            }
-        }
+//        item.postLike.setOnClickListener {
+//            if (liker.contains(auth.currentUser?.uid)){
+//                liker.remove(auth.currentUser!!.uid)
+//                item.postLike.setImageResource(R.drawable.ic_like)
+//                firestore.collection("Posts").document(postList[position].id).update("likeCount",postList[position].likeCount.toInt()-1)
+//                firestore.collection("Posts").document(postList[position].id).update("liker",liker)
+//            }else{
+//                liker.add(auth.currentUser!!.uid)
+//                item.postLike.setImageResource(R.drawable.ic_like_dolu)
+//                firestore.collection("Posts").document(postList[position].id).update("liker", liker)
+//                firestore.collection("Posts").document(postList[position].id).update("likeCount",postList[position].likeCount.toInt()+1)
+//            }
+//        }
 
 
 
