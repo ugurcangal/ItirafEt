@@ -35,8 +35,7 @@ class FeedBottomSheetViewModel : ViewModel() {
     }
 
     fun getComment(postId: String){
-        firestore.collection("Comments").orderBy("date",
-            Query.Direction.DESCENDING).addSnapshotListener{ value, error ->
+        firestore.collection("Comments").addSnapshotListener{ value, error ->
             if (error != null){
                 Log.e("getComment Hata" , error.localizedMessage!!.toString())
             }else{
