@@ -33,7 +33,8 @@ class PostFragment : BaseFragment<FragmentPostBinding,PostViewModel>(FragmentPos
             }
             else{
                 viewModel.uploadPost(postText)
-                findNavController().navigate(R.id.action_postFragment_to_feedFragment)
+                findNavController().popBackStack()
+                findNavController().navigate(R.id.feedFragment)
                 Toast.makeText(context,"İtiraf Paylaşıldı!",Toast.LENGTH_SHORT).show()
             }
         }
