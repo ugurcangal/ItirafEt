@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -18,8 +19,8 @@ class PostViewModel : ViewModel() {
 
     fun uploadPost(text : String){
 
-        val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
-        val currentDate = sdf.format(Date())
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
+        val currentDate = Timestamp.now()
         val postMap = hashMapOf<String,Any>()
         val likerList = arrayListOf<String>()
         postMap.put("postText", text)

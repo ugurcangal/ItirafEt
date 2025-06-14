@@ -6,11 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.model.Post
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class FeedViewModel : ViewModel() {
 
@@ -34,10 +37,16 @@ class FeedViewModel : ViewModel() {
                             val id = document.id
                             val postText = document.get("postText") as String
                             val likeCount = document.get("likeCount")
-                            val date = document.get("date")
+                            val timestamp = document.getTimestamp("date")
+                            val formattedDate = if (timestamp != null) {
+                                val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+                                sdf.format(timestamp.toDate())
+                            } else {
+                                ""
+                            }
 
 
-                            val post = Post(id,postText, likeCount.toString(), date.toString())
+                            val post = Post(id,postText, likeCount.toString(), formattedDate)
                             postArrayList2.add(post)
                             postArrayList.value = postArrayList2
                         }
