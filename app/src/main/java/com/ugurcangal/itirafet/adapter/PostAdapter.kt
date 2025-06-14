@@ -1,5 +1,6 @@
 package com.ugurcangal.itirafet.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.databinding.PostDesignBinding
+import com.ugurcangal.itirafet.model.Comment
 import com.ugurcangal.itirafet.model.Post
 import com.ugurcangal.itirafet.view.FeedFragment
 import com.ugurcangal.itirafet.view.FeedFragmentDirections
@@ -40,6 +43,30 @@ class PostAdapter(
         item.postTextView.text = postList[position].postText
         item.postTime.text = postList[position].date.toString()
         item.likeCount.text = postList[position].likeCount
+
+        Firebase.firestore.collection("Comments").addSnapshotListener{ value, error ->
+            if (error != null){
+                Log.e("getComment Hata" , error.localizedMessage!!.toString())
+            }else{
+                value?.let {
+                    if (!value.isEmpty){
+                        val documents = value.documents
+                        var count = 0
+                        for (document in documents){
+                            if (postList[position].id == document.get("postId")){
+                                count++
+                            }
+
+                        }
+                        item.commentCount.text = if (count < 99){
+                            count.toString()
+                        }else{
+                            "99+"
+                        }
+                    }
+                }
+            }
+        }
 
         val firestore : FirebaseFirestore = Firebase.firestore
         val auth : FirebaseAuth = Firebase.auth
