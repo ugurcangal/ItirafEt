@@ -19,6 +19,7 @@ import com.ugurcangal.itirafet.R
 import com.ugurcangal.itirafet.databinding.PostDesignBinding
 import com.ugurcangal.itirafet.model.Comment
 import com.ugurcangal.itirafet.model.Post
+import com.ugurcangal.itirafet.util.getTimeAgo
 import com.ugurcangal.itirafet.view.FeedFragment
 import com.ugurcangal.itirafet.view.FeedFragmentDirections
 import com.ugurcangal.itirafet.view.PostFragment
@@ -41,7 +42,7 @@ class PostAdapter(
     override fun onBindViewHolder(holder: PostAdapterViewHolder, position: Int) {
         val item = holder.binding
         item.postTextView.text = postList[position].postText
-        item.postTime.text = postList[position].date.toString()
+        item.postTime.text = getTimeAgo(postList[position].date)
         item.likeCount.text = postList[position].likeCount
 
         Firebase.firestore.collection("Comments").addSnapshotListener{ value, error ->

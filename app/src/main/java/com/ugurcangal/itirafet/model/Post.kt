@@ -7,5 +7,5 @@ data class Post(
     val id : String,
     val postText : String,
     val likeCount : String,
-    val date : String,
+    val date : Timestamp,
 )

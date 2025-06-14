@@ -46,7 +46,7 @@ class FeedViewModel : ViewModel() {
                             }
 
 
-                            val post = Post(id,postText, likeCount.toString(), formattedDate)
+                            val post = Post(id,postText, likeCount.toString(), timestamp!!)
                             postArrayList2.add(post)
                             postArrayList.value = postArrayList2
                         }
